@@ -23,6 +23,12 @@ public class KafkaProxy {
         this.log = log;
     }
 
+    /**
+     * Send the given queue entry to kafka. Sending has succeeded if no exception is thrown
+     * Exceptions are thrown directly from the (spring) kafkaTemplate
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     public void send(QueueEntity toSend) throws ExecutionException, InterruptedException {
         SendResult<Long, String> result = kafkaTemplate.send(topic, toSend.getMessageId(), toSend.getMessageText())
                 .completable()

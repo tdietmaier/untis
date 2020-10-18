@@ -8,10 +8,16 @@ $ curl -i -s -X POST localhost:8080/messages -d '{"id":1002,"text":"test 123 ö�
 
 # Designentscheidungen
 
-Dass die ID als Kafka-key zu verwenden ist, hab ich einfach angenommen; Detto, dass POSTs mit gleicher ID die message ohne Fehlermeldung überschreiben sollen.
+Dass die ID als Key in Kafka zu verwenden ist, hab ich einfach angenommen; Detto, dass POST-Requests bestehende messages mit gleicher ID überschreiben sollen.
 Eine bestimmte Reihenfolge der Übertragung nach Kafka wird nicht garantiert.
 
 Entities werden der Einfachkeit halber gleich als DTOs verwendet, das geht m. E. nur bei so kleinen und einfachen Anwendungen gut.
+
+## Kafka als "source of truth"
+
+Wäre auch eine Möglichkeit gewesen: Wenn die Nachricht nach Kafka geschrieben ist, wird sie als "persistiert" betrachtet und der REST-Request mit status 200 beantwortet; zum
+Schreiben in die DB lesen wir unsere eigenen Nachrichten wieder aus Kafka. Möglicher Nachteil: Wenn Kafka nicht verfügbar ist, steht der REST-Service auch nicht zur
+Verfügung. Das hängt jetzt vom Systemumfeld ab -- hängt die Funktion eher an Kafka oder an der Datenbank bzw. lässt sich die Verfügbarkeit abschätzen.
 
 ## Eigene Queue-Tabelle
 
