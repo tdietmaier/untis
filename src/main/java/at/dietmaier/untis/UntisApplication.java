@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
-@EnableTransactionManagement
 public class UntisApplication {
 
     public static void main(String[] args) {

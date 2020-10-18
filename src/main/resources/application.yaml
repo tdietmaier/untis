@@ -1,23 +1,17 @@
+untis:
+  kafka:
+    topic: "sample"
 spring:
-  jta:
-    transaction-manager-id: untis
-    enabled: true
-    service: com.atomikos.icatch.standalone.UserTransactionServiceFactory
-    max-actives: 200
-    enable-logging: false
-
-    atomikos:
-      datasource:
-        untis:
-          unique-resource-name: untis
-          max-pool-size: 5
-          min-pool-size: 1
-          max-life-time: 20000
-          borrow-connection-timeout: 10000
-          xa-data-source-class-name: org.postgresql.xa.PGXADataSource
-          xa-properties:
-            # you probably also need to set max_prepared_transactions = 100 in postgresql.conf
-            # to enable XA transactions
-            user: untis
-            password: untis
-            URL: jdbc:postgresql://localhost:5432/untis
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/untis"
+    username: untis
+    password: untis
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+  kafka:
+    bootstrap-servers: "localhost:9092"
+  task:
+    scheduling:
+      pool:
+        size: 5

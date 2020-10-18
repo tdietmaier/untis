@@ -19,9 +19,4 @@ public class KafkaProxy {
 
     }
 
-    public void send(Message toSend) throws ExecutionException, InterruptedException {
-        SendResult<Long, String> result = kafkaTemplate.send("sample", toSend.getId(), toSend.getText())
-                .completable()
-                .get();
-    }
 }
