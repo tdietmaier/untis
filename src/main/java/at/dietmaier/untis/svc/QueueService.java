@@ -5,13 +5,11 @@ import at.dietmaier.untis.persistence.QueueEntity;
 import at.dietmaier.untis.persistence.QueueRepository;
 import lombok.Synchronized;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class QueueService {

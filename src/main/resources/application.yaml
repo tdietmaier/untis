@@ -1,5 +1,6 @@
 untis:
   kafka:
+    # kafka topic to emit messages to.
     topic: "sample"
 spring:
   datasource:
