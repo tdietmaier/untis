@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
-import java.time.OffsetDateTime;
 
 @Entity
 @Data
@@ -24,8 +23,8 @@ public class QueueEntity {
     @Size(max=200)
     private String messageText;
 
-    public QueueEntity(long messageid, String messageText) {
-        this.messageId = messageid;
+    public QueueEntity(long messageId, String messageText) {
+        this.messageId = messageId;
         this.messageText = messageText;
     }
 }

@@ -13,8 +13,12 @@ import javax.validation.Valid;
 @RestController
 public class MessageController {
 
+    private final MessageService messageService;
+
     @Autowired
-    private MessageService messageService;
+    public MessageController(MessageService messageService) {
+        this.messageService = messageService;
+    }
 
     @PostMapping("/messages")
     public ResponseEntity<String> addMessage(@Valid @RequestBody Message msg) {

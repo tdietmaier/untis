@@ -15,3 +15,6 @@ spring:
     scheduling:
       pool:
         size: 5
+logging:
+  level:
+    at.dietmaier: debug
